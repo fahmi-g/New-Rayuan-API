@@ -5,5 +5,6 @@ ENV PORT 80
 
 WORKDIR /app
 COPY . .
+RUN mkdir images
 RUN pip install -r requirements.txt
 CMD python main.py

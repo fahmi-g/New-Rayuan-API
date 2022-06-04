@@ -1,9 +1,13 @@
 import os
+import io
 from keras.models import load_model
 from flask import Flask, request
 from keras.preprocessing.image import image_utils
 import numpy as np
 import json
+import PIL.Image as Image
+import time
+import base64
 
 app = Flask(__name__)
 model = load_model('model_experiment.h5')
@@ -11,12 +15,11 @@ labels = ['Excellent', 'Great', 'Okay', 'Poor', 'Uncertain']
 
 @app.route('/', methods=['POST'])
 def rating():
-    resImage=request.files['imagefile']
+    resImage=request.stream.read()
+    decodedImage=base64.b64decode(resImage)
+    imageFile=Image.open(io.BytesIO(decodedImage))
 
-    if resImage.filename == '':
-        return render_template('test.html')
-
-    imagePath='./images/'+resImage.filename
+    imagePath='./images/' + time.strftime("%Y%m%d-%H%M%S") + '.jpg'
     resImage.save(imagePath)
 
     image = preprocess_image(imagePath)

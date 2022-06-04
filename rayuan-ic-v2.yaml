@@ -4,17 +4,23 @@ info:
   version: 1.0.0
   title: rayuan-ic
 host: rayuan-ic.apigateway.rayuan-api.cloud.goog
+x-google-backend:
+         address: https://rayuan-ic-api-ljq2gnzcga-et.a.run.app
 schemes:
 - https
+- http
 produces:
   - application/json
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
 paths:
   /prediction:
      post:
        summary: Uploads a file.
        operationId: rateHandwriting
-       x-google-backend:
-         address: https://rayuan-ic-api-ljq2gnzcga-et.a.run.app
        consumes:
          - multipart/form-data
        parameters:

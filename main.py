@@ -1,6 +1,6 @@
 import os
 from keras.models import load_model
-from flask import Flask, request, render_template
+from flask import Flask, request
 from keras.preprocessing.image import image_utils
 import numpy as np
 import json
@@ -8,10 +8,6 @@ import json
 app = Flask(__name__)
 model = load_model('model_experiment.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Poor', 'Uncertain']
-
-@app.route('/', methods=['GET'])
-def rayuan():
-    return render_template('interface.html')
 
 @app.route('/', methods=['POST'])
 def rating():

@@ -9,7 +9,7 @@ app = Flask(__name__)
 model = load_model('model_experiment.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Poor', 'Uncertain']
 
-@app.route('/prediction', methods=['POST'])
+@app.route('/', methods=['POST'])
 def rating():
     resImage=request.files['imagefile']
 

@@ -10,7 +10,7 @@ import time
 import base64
 
 app = Flask(__name__)
-model = load_model('model_experiment.h5')
+model = load_model('model_final.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Poor', 'Uncertain']
 
 @app.route('/', methods=['POST'])

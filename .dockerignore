@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 .vs
 openapi2-run.yaml
 model_experiment.h5
+=======
+.vs
+>>>>>>> parent of b821dee (Adding secure gateway config)

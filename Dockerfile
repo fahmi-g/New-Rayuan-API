@@ -7,4 +7,5 @@ WORKDIR /app
 COPY . .
 RUN mkdir images
 RUN pip install -r requirements.txt
+RUN python modelPuller.py
 CMD python main.py

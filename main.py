@@ -1,16 +1,15 @@
 import os
 import io
 from keras.models import load_model
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from keras.preprocessing.image import image_utils
 import numpy as np
-import json
 import PIL.Image as Image
 import time
 import base64
 
 app = Flask(__name__)
-model = load_model('model_final.h5')
+model = load_model('model_experiment.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Poor', 'Uncertain']
 
 @app.route('/', methods=['POST'])
@@ -25,7 +24,7 @@ def rating():
     image = preprocess_image(imagePath)
 
     prediction=model.predict(image, batch_size=10)
-    predLabel=json.dumps([{'label':labels[np.argmax(prediction)], 'certainty':str(np.max(prediction))}])
+    predLabel=jsonify({'label':labels[np.argmax(prediction)], 'certainty':str(np.max(prediction))})
 
     os.remove(imagePath)
 

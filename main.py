@@ -18,7 +18,7 @@ def rating():
     decodedImage=base64.b64decode(resImage)
     imageFile=Image.open(io.BytesIO(decodedImage))
 
-    imagePath='./images/' + time.strftime("%Y%m%d-%H%M%S") + '.jpg'
+    imagePath='./images/' + time.strftime("%Y%m%d-%H%M%S") + '.png'
     imageFile.save(imagePath)
 
     image = preprocess_image(imagePath)

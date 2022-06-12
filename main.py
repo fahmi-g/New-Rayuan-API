@@ -13,7 +13,7 @@ api = Flask(__name__)
 model = load_model('latest_model.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Uncertain', 'Poor']
 
-@app.route('/', methods=['POST'])
+@api.route('/', methods=['POST'])
 def rating():
     session.permanent = True
     app.permanent_session_lifetime = timedelta(minutes=10)

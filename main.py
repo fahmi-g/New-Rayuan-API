@@ -1,19 +1,23 @@
 import os
 import io
 from keras.models import load_model
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session, app
+from datetime import timedelta
 from keras.preprocessing.image import image_utils
 import numpy as np
 import PIL.Image as Image
 import time
 import base64
 
-app = Flask(__name__)
+api = Flask(__name__)
 model = load_model('latest_model.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Uncertain', 'Poor']
 
 @app.route('/', methods=['POST'])
 def rating():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(minutes=10)
+
     resImage=request.stream.read()
     decodedImage=base64.b64decode(resImage)
     imageFile=Image.open(io.BytesIO(decodedImage))
@@ -40,4 +44,4 @@ def preprocess_image(input):
     return image
 
 if __name__ == '__main__':
-    app.run(port='80', host='0.0.0.0')
+    api.run(port='80', host='0.0.0.0')

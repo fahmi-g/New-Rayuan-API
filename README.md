@@ -1,4 +1,4 @@
-# Rayuan (Rate Your Handwriting) Handwriting API Specification
+# Rayuan (Rate Your Handwriting) API Specification
 https://fahmi-g.github.io/Rayuan-Image-Classification-API/
 
 The API is currently offline

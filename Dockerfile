@@ -8,5 +8,5 @@ COPY . .
 RUN mkdir images
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN python gdown --id 1YxEIPh26QVf-W2TRp3rFXToqsRUqvwrV
+RUN python modelPuller.py
 CMD python main.py

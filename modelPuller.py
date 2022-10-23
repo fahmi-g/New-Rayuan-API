@@ -1,5 +1,5 @@
 import gdown
 
-id = "0B9P1L--7Wd2vNm9zMTJWOGxobkU"
+url = "https://drive.google.com/u/1/uc?id=1YxEIPh26QVf-W2TRp3rFXToqsRUqvwrV&export=download"
 output = "The Best Model.h5"
-gdown.download(id=id, output=output, quiet=False)
+gdown.download(url=url, output=output)

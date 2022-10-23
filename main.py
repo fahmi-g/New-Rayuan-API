@@ -12,9 +12,9 @@ app = Flask(__name__)
 model = load_model('The Best Model.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Uncertain', 'Poor']
 
-@app.route('/test', methods=['GET'])
+@app.route('/model', methods=['GET'])
 def test():
-    return "Test"
+    return "The Best Model.h5"
 
 @app.route('/', methods=['POST'])
 def rating():

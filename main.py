@@ -12,6 +12,10 @@ app = Flask(__name__)
 model = load_model('The Best Model.h5')
 labels = ['Excellent', 'Great', 'Okay', 'Uncertain', 'Poor']
 
+@app.route('/test', methods=['GET'])
+def test():
+    return "Test"
+
 @app.route('/', methods=['POST'])
 def rating():
     resImage=request.stream.read()
